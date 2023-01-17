@@ -1,0 +1,27 @@
+{% extends 'test.html' %}
+{% block content %}
+
+{% if tipuri_postari %}
+
+    <h1>{{ tip }}</h1>
+
+    <ul>
+    {% for postare in tipuri_postari %}
+        <li> <a href="{% url 'articole_details' postare.pk %}" >{{ postare.titlu }} </a>
+
+            - {{ postare.autor.first_name }}
+            {{ postare.autor.last_name }} *** {{postare.data_postare}} *** <small>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'editare_postare' postare.pk %}">(Editare)</a> <br/>
+                <a href="{% url 'stergere_postare' postare.pk %}">(Sterge)</a>
+            {% endif %}
+          </small><br/>
+        {{ postare.cuprins|slice:"300"|safe }} </li>
+
+    {% endfor %}
+    </ul>
+{% else %}
+<h4>Ne pare rau, categoria aleasa de tine nu exista sau nu are continut.</h4>
+{% endif %}
+{% endblock %}

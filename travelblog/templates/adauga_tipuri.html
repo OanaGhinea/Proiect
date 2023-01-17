@@ -1,0 +1,18 @@
+{% extends 'test.html' %}
+{% block title %}Un nou tip de postare{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h3>Adauga un tip de postare pe pagina de TravelBlog ...</h3>
+    <br><br/>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+    <div/>
+        <button class="btn btn-light">Categorie postare</button>
+{% else %}
+    Nu poti adauga un text daca nu te-ai autentificat!
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'test.html' %}
+{% block title %} Editeaza postarea {% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h3>Editeaza postarea pe TravelBlog ...</h3>
+    <br><br/>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+             <button class="btn btn-light">Editare</button>
+    <div/>
+
+{% else %}
+    Nu poti edita un text daca nu te-ai autentificat!
+{% endif %}
+{% endblock %}

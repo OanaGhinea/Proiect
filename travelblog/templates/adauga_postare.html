@@ -1,0 +1,18 @@
+{% extends 'test.html' %}
+{% block title %}{{postare.titlu_nav}}{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h3>Adauga o postare pe pagina de TravelBlog ...</h3>
+    <br><br/>
+    <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+    <div/>
+        <button class="btn btn-light">Postare</button>
+{% else %}
+    Nu poti adauga un text daca nu te-ai autentificat!
+{% endif %}
+
+{% endblock %}

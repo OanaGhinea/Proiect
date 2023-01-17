@@ -1,0 +1,31 @@
+{% extends 'test.html' %}
+{% block title %}{{postare.titlu_nav}}{% endblock %}
+
+{% block content %}
+
+    <h1>{{postare.titlu}}</h1>
+
+     De: {{ postare.autor.first_name }}
+         {{ postare.autor.last_name }} ***
+         {{postare.data_postare}}
+         {% if user.is_authenticated %}
+<!--            {% if user.id == postare.autor.id %}-->
+                -<a href="{% url 'editare_postare' postare.pk %}">(Editare)</a>
+                 <a href="{% url 'stergere_postare' postare.pk %}">(Stergere)</a>
+            {% endif %}
+<!--        {% endif %}-->
+
+    </small><br/>
+    <hr>
+    <br/>
+    <img src="{{ postare.imagine_blog.url }}">
+    <br/><br/>
+    {{ postare.cuprins|safe }}
+
+    <br/><br/>
+
+    <a href="{% url 'home' %}" class="btn btn-light">Inapoi la pagina principala</a>
+
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'test.html' %}
+{% block title %}Inregistrare{% endblock %}
+{% block content %}
+
+<h3>Iti place sa calatoresti? Vrei sa iti spui impresiile despre o locatie? Inscrie-te aici</h3>
+<br><br/>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-light">Inscrie-te</button>
+
+
+<div/>
+
+{% endblock %}

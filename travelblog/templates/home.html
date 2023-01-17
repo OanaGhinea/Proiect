@@ -1,0 +1,26 @@
+{% extends 'test.html' %}
+
+{% block content %}
+
+<h3>Blog de calatorii</h3>
+
+<ul>
+{%  for postare in object_list %}
+    <li> <a href="{% url 'articole_details' postare.pk %}" >{{ postare.titlu }} </a>
+        - <a href ="{% url 'tipuri' postare.tipuri|slugify %}">{{ postare.tipuri }}</a>
+        - {{ postare.autor.first_name }}
+        {{ postare.autor.last_name }} *** {{postare.data_postare}} *** <small>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'editare_postare' postare.pk %}">(Editare)</a> <br/>
+            <a href="{% url 'stergere_postare' postare.pk %}">(Sterge)</a>
+        {% endif %}
+
+         </small><br/>
+            {{ postare.cuprins|slice:"400"|safe }} </li>
+{% endfor %}
+</ul>
+<!--{{tip_menu}}-->
+
+
+{% endblock %}

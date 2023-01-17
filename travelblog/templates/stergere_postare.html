@@ -1,0 +1,17 @@
+{% extends 'test.html' %}
+{% block title %} Sterge postarea {% endblock %}
+{% block content %}
+
+<h3>Sterge postarea pe TravelBlog ...</h3>
+<br><br/>
+<h3>Sterge: {{postare.titlu}}</h3>
+<br/>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        <strong>Esti sigur ca vrei sa stergi articolul?</strong><br/><br/>
+
+<div/>
+    <button class="btn btn-light">Sterge</button>
+
+{% endblock %}
